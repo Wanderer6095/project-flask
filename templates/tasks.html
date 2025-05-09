@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Ваши задачи</h2>
+
+<a href="{{ url_for('tasks.new_task') }}" class="btn btn-primary mb-3">Создать новую задачу</a>
+
+<ul class="list-group">
+    {% for task in tasks %}
+    <li class="list-group-item">
+        <strong>{{ task.name }}</strong>
+        — Прогресс: {{ task.progress }}%
+        {% if task.progress == 100 %} ✅ {% endif %}
+        <br>
+        {% if task.goal %}
+            Цель: {{ task.goal.title }}
+            {% if task.goal.description %}
+                — <em>{{ task.goal.description }}</em>
+            {% endif %}
+        {% else %}
+            <em>Без цели</em>
+        {% endif %}
+        <br>
+        <a href="{{ url_for('tasks.edit_task', task_id=task.id) }}" class="btn btn-sm btn-outline-secondary mt-2">Редактировать</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

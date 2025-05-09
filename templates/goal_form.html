@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Новая цель' if not goal else 'Редактировать цель' }}{% endblock %}
+{% block content %}
+<h2>{{ 'Новая цель' if not goal else 'Редактировать цель' }}</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Название</label>
+        <input type="text" name="title" class="form-control" value="{{ goal.title if goal else '' }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Описание</label>
+        <textarea name="description" class="form-control">{{ goal.description if goal else '' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Ваши цели</h2>
+
+<a href="{{ url_for('goals.new_goal') }}" class="btn btn-primary mb-3">Добавить новую цель</a>
+
+<ul class="list-group">
+    {% for goal in goals %}
+    <li class="list-group-item">
+        <strong>{{ goal.title }}</strong>
+        {% if goal.description %}
+            <p><em>{{ goal.description }}</em></p>
+        {% endif %}
+        <a href="{{ url_for('goals.edit_goal', goal_id=goal.id) }}" class="btn btn-sm btn-outline-secondary">Редактировать</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

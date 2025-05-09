@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Новая цель</h2>
+<form method="POST">
+    <div class="form-group">
+        <label>Название цели</label>
+        <input type="text" name="title" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Описание цели</label>
+        <textarea name="description" class="form-control" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Создать цель</button>
+</form>
+{% endblock %}

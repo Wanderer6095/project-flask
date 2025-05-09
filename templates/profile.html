@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Личный кабинет{% endblock %}
+{% block content %}
+<h2>Добро пожаловать, {{ current_user.username }}!</h2>
+<a href="{{ url_for('goals.list_goals') }}" class="btn btn-outline-primary">Мои цели</a>
+<a href="{{ url_for('tasks.list_tasks') }}" class="btn btn-outline-secondary">Мои задачи</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Новая задача{% endblock %}
+{% block content %}
+<h2>Добавить задачу</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Название</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Прогресс (%)</label>
+        <input type="number" name="progress" class="form-control" min="0" max="100" value="0" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Цель</label>
+        <select name="goal_id" class="form-select">
+            {% for goal in goals %}
+                <option value="{{ goal.id }}">{{ goal.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}
